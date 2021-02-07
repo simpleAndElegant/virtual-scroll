@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <VirtualList
-      :size="40"
+      :size="100"
       :remain="8"
       :items="items"
+      :variable="true"
     >
     <Item slot-scope="{item}" :item="item" />
     </VirtualList>
@@ -13,9 +14,11 @@
 <script>
 import VirtualList from './components/Virtual-list.vue'
 import Item from './components/Item.vue'
+import Mock from 'mockjs'
+
 let items = [];
-for (let i = 1; i < 1000; i++) {
-  items.push({id: i, value: i})
+for (let i = 0; i < 1000; i++) {
+  items.push({id: i, value: Mock.Random.sentence(5, 50)})
 }
 
 
